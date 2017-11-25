@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springboot.sam.entity.Article;
+
+/**
+ * @author sumit
+ *
+ */
 @Transactional
 @Repository
 public class ArticleDAO implements IArticleDAO {

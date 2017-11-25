@@ -14,6 +14,11 @@ import org.springframework.stereotype.Service;
 import com.springboot.sam.dao.IUserInfoDAO;
 import com.springboot.sam.entity.UserInfo;
 
+
+/**
+ * @author sumit
+ *
+ */
 @Service
 public class MyAppUserDetailsService implements UserDetailsService {
 	@Autowired

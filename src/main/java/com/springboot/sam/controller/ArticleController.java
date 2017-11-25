@@ -19,6 +19,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.springboot.sam.entity.Article;
 import com.springboot.sam.service.IArticleService;
 
+
+/**
+ * @author sumit
+ *
+ */
 @Controller
 @RequestMapping("user")
 public class ArticleController {

@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
@@ -23,12 +22,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jndi.JndiObjectFactoryBean;
 
+
+/**
+ * @author sumit
+ *
+ */
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.springboot.sam" })
 public class MyWebApplication extends SpringBootServletInitializer {
 
 	private int maxUploadSizeInMb = 10 * 1024 * 1024; // 10 MB
-	
+
 	@Autowired
 	private ApplicationContext appContext;
 
@@ -49,14 +53,14 @@ public class MyWebApplication extends SpringBootServletInitializer {
 				tomcat.enableNaming();
 				return super.getTomcatEmbeddedServletContainer(tomcat);
 			}
-			
+
 			protected void customizeConnector(Connector connector) {
-	            super.customizeConnector(connector);
-	            if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
-	                ((AbstractHttp11Protocol <?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
-	            }
-	        }
-			
+				super.customizeConnector(connector);
+				if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
+					((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
+				}
+			}
+
 			@Override
 			protected void postProcessContext(Context context) {
 				ContextResource resource = new ContextResource();
@@ -68,7 +72,7 @@ public class MyWebApplication extends SpringBootServletInitializer {
 				resource.setProperty("password", "root");
 				context.getNamingResources().addResource(resource);
 			}
-						
+
 		};
 	}
 
@@ -92,7 +96,7 @@ public class MyWebApplication extends SpringBootServletInitializer {
 		Arrays.sort(beans);
 		for (String bean : beans) {
 			System.out.println(bean);
-		}	
+		}
 	}
 
 }
